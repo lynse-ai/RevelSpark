@@ -9,6 +9,7 @@ import MaintenancePage from './pages/MaintenancePage';
 
 // Lazy load sub-pages
 const DownloadPage = lazy(() => import('./components/ui/DownloadPage'));
+const SupportCenterPage = lazy(() => import('./pages/SupportCenterPage'));
 
 // Loading component
 const PageLoader = () => (
@@ -147,6 +148,14 @@ function App() {
       <Suspense fallback={<PageLoader />}>
         <Header language={language} onLanguageChange={handleLanguageChange} navigate={navigate} />
         <DownloadPage language={language} />
+        <Footer language={language} navigate={navigate} />
+      </Suspense>
+    );
+  } else if (route === '/SupportCenterPage') {
+    pageContent = (
+      <Suspense fallback={<PageLoader />}>
+        <Header language={language} onLanguageChange={handleLanguageChange} navigate={navigate} />
+        <SupportCenterPage language={language} />
         <Footer language={language} navigate={navigate} />
       </Suspense>
     );
