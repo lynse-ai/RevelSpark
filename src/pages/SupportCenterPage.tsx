@@ -32,19 +32,40 @@ interface Props {
 }
 
 const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
-  // Read category from URL params for auto-expand
-  const urlCategory = useMemo(() => {
-    return new URLSearchParams(window.location.search).get('category') || '';
-  }, []);
+  const actualEmbedded = embedded || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('mobile') === 'true');
+  // Read URL params for category filtering and mobile mode
+  const urlParams = useMemo(() => new URLSearchParams(window.location.search), []);
+  const urlCategory = urlParams.get('category') || '';
+  const categoriesFilter = useMemo(() => {
+    const param = urlParams.get('categories');
+    if (!param) return null; // null = show all
+    return param.split(',').map(s => s.trim()).filter(Boolean);
+  }, [urlParams]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(() => {
+    // Auto-expand all when embedded with single category
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('categories');
+    if (actualEmbedded && catParam) {
+      const ids = catParam.split(',').map(s => s.trim());
+      if (ids.length === 1) return new Set(ids);
+    }
     if (urlCategory && FAQ_CATEGORIES.some(c => c.id === urlCategory)) {
       return new Set([urlCategory]);
     }
     return new Set();
   });
   const [expandedSections, setExpandedSections] = useState<Set<string>>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('categories');
+    if (actualEmbedded && catParam) {
+      const ids = catParam.split(',').map(s => s.trim());
+      if (ids.length === 1) {
+        const cat = FAQ_CATEGORIES.find(c => c.id === ids[0]);
+        if (cat) return new Set(cat.sections.map(s => s.id));
+      }
+    }
     if (urlCategory) {
       const cat = FAQ_CATEGORIES.find(c => c.id === urlCategory);
       if (cat) return new Set(cat.sections.map(s => s.id));
@@ -66,12 +87,18 @@ const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
     }
   }, [urlCategory]);
 
+  // Filter categories based on URL param
+  const displayCategories = useMemo(() => {
+    if (!categoriesFilter) return FAQ_CATEGORIES;
+    return FAQ_CATEGORIES.filter(c => categoriesFilter.includes(c.id));
+  }, [categoriesFilter]);
+
   // Search
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return null;
     const q = searchQuery.toLowerCase();
     const results: { item: FAQItem; category: FAQCategory; section: FAQSection }[] = [];
-    FAQ_CATEGORIES.forEach(cat => {
+    displayCategories.forEach(cat => {
       cat.sections.forEach(sec => {
         sec.items.forEach(item => {
           const qMatch = item.question[language].toLowerCase().includes(q);
@@ -81,7 +108,7 @@ const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
       });
     });
     return results;
-  }, [searchQuery, language]);
+  }, [searchQuery, language, displayCategories]);
 
   const toggle = (set: Set<string>, id: string, setter: React.Dispatch<React.SetStateAction<Set<string>>>) => {
     setter(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -106,32 +133,34 @@ const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
   return (
     <div className="bg-gray-50 font-sans antialiased min-h-screen">
       {/* ── Hero ── */}
-      <div className={`${embedded ? 'pt-8 pb-6' : 'pt-20 pb-8 sm:pt-28 sm:pb-12'} bg-white`}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className={`text-2xl sm:text-4xl lg:text-5xl font-extrabold text-black tracking-tight ${embedded ? 'mb-3' : 'mb-4'}`}>
-            {t(TEXTS.title, language)}
-          </h1>
-          <p className="text-sm sm:text-lg text-gray-500 mb-6 sm:mb-8">
-            {t(TEXTS.subtitle, language)}
-          </p>
-          <div className="relative max-w-xl mx-auto">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={t(TEXTS.searchPlaceholder, language)}
-              className="w-full pl-10 sm:pl-12 pr-10 py-3 sm:py-3.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-gray-300 transition-all"
-            />
-            {searchQuery && (
-              <button onClick={clearSearch} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-              </button>
-            )}
+      {!actualEmbedded && (
+        <div className={`${actualEmbedded ? 'pt-8 pb-6' : 'pt-20 pb-8 sm:pt-28 sm:pb-12'} bg-white`}>
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className={`text-2xl sm:text-4xl lg:text-5xl font-extrabold text-black tracking-tight ${actualEmbedded ? 'mb-3' : 'mb-4'}`}>
+              {t(TEXTS.title, language)}
+            </h1>
+            <p className="text-sm sm:text-lg text-gray-500 mb-6 sm:mb-8">
+              {t(TEXTS.subtitle, language)}
+            </p>
+            <div className="relative max-w-xl mx-auto">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t(TEXTS.searchPlaceholder, language)}
+                className="w-full pl-10 sm:pl-12 pr-10 py-3 sm:py-3.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-gray-300 transition-all"
+              />
+              {searchQuery && (
+                <button onClick={clearSearch} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
 
@@ -178,27 +207,30 @@ const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
         {/* ── Full Accordion (all categories) ── */}
         {searchResults === null && (
           <div className="space-y-2 sm:space-y-3">
-            {FAQ_CATEGORIES.map(category => {
+            {displayCategories.map(category => {
               const catExpanded = expandedCategories.has(category.id);
               const totalItems = category.sections.reduce((a, s) => a + s.items.length, 0);
+              const hideCategoryHeader = actualEmbedded && displayCategories.length === 1;
 
               return (
-                <div key={category.id} data-category-id={category.id} className="bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden">
-                  {/* Category Header */}
-                  <button
-                    onClick={() => toggleCategory(category.id)}
-                    className="w-full flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 hover:bg-gray-50/50 transition-colors active:bg-gray-50"
-                  >
-                    <div className="text-left">
-                      <h2 className="text-sm sm:text-base font-bold text-black">{t(category.title, language)}</h2>
-                      <p className="text-xs text-gray-400 mt-0.5">{totalItems} {t(TEXTS.articles, language)}</p>
-                    </div>
-                    <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 transition-transform duration-200 ${catExpanded ? 'rotate-180' : ''}`} />
-                  </button>
+                <div key={category.id} data-category-id={category.id} className={`${hideCategoryHeader ? '' : 'bg-white rounded-xl sm:rounded-2xl border border-gray-100'} overflow-hidden`}>
+                  {/* Category Header - hidden in embedded single-category mode */}
+                  {!hideCategoryHeader && (
+                    <button
+                      onClick={() => toggleCategory(category.id)}
+                      className="w-full flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 hover:bg-gray-50/50 transition-colors active:bg-gray-50"
+                    >
+                      <div className="text-left">
+                        <h2 className="text-sm sm:text-base font-bold text-black">{t(category.title, language)}</h2>
+                        <p className="text-xs text-gray-400 mt-0.5">{totalItems} {t(TEXTS.articles, language)}</p>
+                      </div>
+                      <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 transition-transform duration-200 ${catExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                  )}
 
                   {/* Category Body */}
-                  <div className={`transition-all duration-300 ease-in-out ${catExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                    <div className="border-t border-gray-100">
+                  <div className={`transition-all duration-300 ease-in-out ${(hideCategoryHeader || catExpanded) ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                    <div className={hideCategoryHeader ? '' : 'border-t border-gray-100'}>
                       {(() => {
                         const isSingleSection = category.sections.length === 1;
 
@@ -263,40 +295,42 @@ const SupportCenterPage: React.FC<Props> = ({ language, embedded = false }) => {
         )}
 
         {/* ── Contact ── */}
-        <div className="mt-10 sm:mt-16 border-t border-gray-200 pt-8 sm:pt-10">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-base sm:text-lg font-bold text-black mb-1.5 sm:mb-2">{t(TEXTS.contactTitle, language)}</h2>
-            <p className="text-xs sm:text-sm text-gray-500">{t(TEXTS.contactSubtitle, language)}</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
-            <a href="mailto:support@lynse.ai" className="bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all active:bg-gray-50">
-              <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.emailUs, language)}</p>
-              <p className="text-xs text-gray-400">support@lynse.ai</p>
-            </a>
-            <div className="relative">
-              <button
-                onClick={() => setShowCSRQ(!showCSRQ)}
-                className="w-full bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all cursor-pointer active:bg-gray-50"
-              >
-                <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.contactSupport, language)}</p>
-                <p className="text-xs text-gray-400">{t(TEXTS.tapToShow, language)}</p>
-              </button>
-              {showCSRQ && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setShowCSRQ(false)} />
-                  <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-gray-100 p-5 text-center ${embedded ? 'w-52' : 'w-48 sm:w-52'}`}>
-                    <img src="/images/customer_service_qr.png" alt={t(TEXTS.scanContact, language)} className="w-36 sm:w-40 h-36 sm:h-40 mx-auto mb-2" />
-                    <p className="text-xs text-gray-500">{t(TEXTS.scanContact, language)}</p>
-                  </div>
-                </>
-              )}
+        {!actualEmbedded && (
+          <div className="mt-10 sm:mt-16 border-t border-gray-200 pt-8 sm:pt-10">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-base sm:text-lg font-bold text-black mb-1.5 sm:mb-2">{t(TEXTS.contactTitle, language)}</h2>
+              <p className="text-xs sm:text-sm text-gray-500">{t(TEXTS.contactSubtitle, language)}</p>
             </div>
-            <a href="tel:+8617621502813" className="bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all active:bg-gray-50">
-              <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.phoneSupport, language)}</p>
-              <p className="text-xs text-gray-400">+86 17621502813</p>
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
+              <a href="mailto:support@lynse.ai" className="bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all active:bg-gray-50">
+                <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.emailUs, language)}</p>
+                <p className="text-xs text-gray-400">support@lynse.ai</p>
+              </a>
+              <div className="relative">
+                <button
+                  onClick={() => setShowCSRQ(!showCSRQ)}
+                  className="w-full bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all cursor-pointer active:bg-gray-50"
+                >
+                  <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.contactSupport, language)}</p>
+                  <p className="text-xs text-gray-400">{t(TEXTS.tapToShow, language)}</p>
+                </button>
+                {showCSRQ && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setShowCSRQ(false)} />
+                    <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-gray-100 p-5 text-center ${actualEmbedded ? 'w-52' : 'w-48 sm:w-52'}`}>
+                      <img src="/images/customer_service_qr.png" alt={t(TEXTS.scanContact, language)} className="w-36 sm:w-40 h-36 sm:h-40 mx-auto mb-2" />
+                      <p className="text-xs text-gray-500">{t(TEXTS.scanContact, language)}</p>
+                    </div>
+                  </>
+                )}
+              </div>
+              <a href="tel:+8617621502813" className="bg-white rounded-xl border border-gray-100 p-4 sm:p-5 text-center hover:border-gray-300 transition-all active:bg-gray-50">
+                <p className="text-sm font-semibold text-black mb-1">{t(TEXTS.phoneSupport, language)}</p>
+                <p className="text-xs text-gray-400">+86 17621502813</p>
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -152,7 +152,12 @@ function App() {
       </Suspense>
     );
   } else if (route === '/SupportCenterPage') {
-    pageContent = (
+    const isMobileView = new URLSearchParams(window.location.search).get('mobile') === 'true';
+    pageContent = isMobileView ? (
+      <Suspense fallback={<PageLoader />}>
+        <SupportCenterPage language={language} embedded />
+      </Suspense>
+    ) : (
       <Suspense fallback={<PageLoader />}>
         <Header language={language} onLanguageChange={handleLanguageChange} navigate={navigate} />
         <SupportCenterPage language={language} />
