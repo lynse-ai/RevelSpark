@@ -684,7 +684,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
             },
             answer: {
               en: 'Turning off cloud sync does not automatically delete recordings. Different types of data may exist separately in the app local, device, and cloud. Before deleting files, cleaning device storage, or turning off sync, please read the page prompts carefully.\n\nRegardless of whether cloud sync is enabled, notes and transcriptions may need to be uploaded to the cloud for AI processing and multi-device visibility.',
-              zh: '关闭云同步不等于自动删除录音。不同类型的数据可能分别存在于 App 本地、设备端和云端。删除文件、清理设备存储或关闭同步前，请认真阅读页面提示。\n\n无论是否开启云同步，笔记和转写内容可能需要上传云端以完成 AI 处理和多设备可见。',
+              zh: '当前版本默认开启云同步，暂不提供关闭云同步的开关。后续版本会提供可关闭云同步的离线模式。\n\n关闭云同步不等于自动删除录音。不同类型的数据可能分别存在于 App 本地、设备端和云端。删除文件、清理设备存储或调整同步设置前，请认真阅读页面提示。\n\n笔记和转写内容可能需要上传云端以完成 AI 处理和多设备可见。',
               'zh-TW': '關閉雲同步不等於自動刪除錄音。不同類型的數據可能分別存在於 App 本地、設備端和雲端。刪除文件、清理設備儲存或關閉同步前，請認真閱讀頁面提示。\n\n無論是否開啟雲同步，筆記和轉寫內容可能需要上傳雲端以完成 AI 處理和多設備可見。',
               ja: 'クラウド同期をオフにしても、録音は自動的に削除されません。異なるタイプのデータは、アプリローカル、デバイス側、クラウドにそれぞれ存在する場合があります。ファイルの削除、デバイスストレージのクリーニング、または同期のオフを行う前に、ページのプロンプトをよくお読みください。',
             },
@@ -699,7 +699,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
             },
             answer: {
               en: 'Yes. The notes page is editable by default. You can directly tap content to modify it, and the system will auto-sync according to current rules.\n\nThe notes toolbar usually includes font size, font style, numbering, quotes, images, undo, etc. Regenerating the summary may replace existing note content. If you have manually edited notes, check the page prompt before regenerating.',
-              zh: '可以。笔记页默认可编辑，不设置独立查看/编辑模式。你可以直接点按内容进行修改，系统会按当前规则自动同步。\n\n笔记工具栏通常包含字号、字体、序号、引用、图片、撤回等入口。重新生成总结可能替换已有笔记内容。如果你已经手动编辑过笔记，重新生成前建议先确认页面提示。',
+              zh: '取决于笔记格式。Markdown 格式模板生成的笔记默认可以编辑，你可以直接点按内容进行修改，系统会按当前规则自动同步。\n\n部分模板生成的笔记是 HTML 格式，暂不支持直接编辑。重新生成总结可能替换已有笔记内容，如果你已经手动编辑过笔记，重新生成前建议先确认页面提示。',
               'zh-TW': '可以。筆記頁預設可編輯，不設置獨立查看/編輯模式。你可以直接點按內容進行修改，系統會按當前規則自動同步。\n\n筆記工具欄通常包含字號、字體、序號、引用、圖片、撤回等入口。重新生成總結可能替換已有筆記內容。如果你已經手動編輯過筆記，重新生成前建議先確認頁面提示。',
               ja: 'はい。ノートページはデフォルトで編集可能です。コンテンツを直接タップして修正でき、システムは現在のルールに従って自動同期します。\n\nノートツールバーには通常、フォントサイズ、フォントスタイル、番号付け、引用、画像、元に戻すなどが含まれます。要約の再生成は既存のノート内容を置換する場合があります。',
             },
@@ -714,7 +714,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
             },
             answer: {
               en: 'Exporting usually generates a file to send to others. Sharing a link allows others to view the content via a link — whether an account is required, and whether downloading or editing is allowed, depends on the current sharing settings.\n\nSharing involves privacy risks. For sensitive content such as client, meeting, medical, legal, or financial information, choose sharing scope carefully.',
-              zh: '导出通常是生成文件后发送给他人。分享链接通常是让他人通过链接查看内容，是否需要账号、是否可下载或编辑，以 App 当前分享页设置为准。\n\n分享包含隐私风险。涉及客户、会议、医疗、法律、财务等敏感内容时，请谨慎选择公开链接或邀请范围。',
+              zh: '导出通常是生成文件后发送给他人。分享链接通常是让他人通过链接查看内容。\n\n分享包含隐私风险。涉及客户、会议、医疗、法律、财务等敏感内容时，请谨慎选择公开链接。',
               'zh-TW': '匯出通常是生成文件後發送給他人。分享鏈接通常是讓他人通過鏈接查看內容，是否需要賬號、是否可下載或編輯，以 App 當前分享頁設置為準。\n\n分享包含隱私風險。涉及客戶、會議、醫療、法律、財務等敏感內容時，請謹慎選擇公開鏈接或邀請範圍。',
               ja: 'エクスポートは通常、ファイルを生成して他人に送信します。リンク共有は通常、リンクを通じてコンテンツを閲覧させます — アカウントが必要かどうか、ダウンロードや編集が可能かどうかは、現在の共有設定によります。\n\n共有にはプライバシーリスクが伴います。クライアント、会議、医療、法律、財務などの機密コンテンツの場合は、共有範囲を慎重に選択してください。',
             },
@@ -1265,7 +1265,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
             },
             answer: {
               en: 'If the app version supports it, go to "Me" or account settings and follow the prompts. You\'ll usually need to verify both the old and new accounts.\n\nIf the old phone number is no longer accessible, follow the appeal process on the page and provide as much information as possible (original account, frequently used devices, recent orders or recharge records, screenshots) for customer service verification.',
-              zh: '如果 App 当前版本已开放换绑入口，可在"我的"或账号设置页面按提示操作。换绑时通常需要验证旧账号和新账号。\n\n如果旧手机号无法使用，请按页面提示发起申诉，并尽量提供原账号、常用设备、近期订单或充值记录、相关截图等信息，方便客服核验。',
+              zh: '当前版本暂未开放手机号换绑入口。后续开放后，可在"我的"页面点击头像进入账号中心，并按页面提示操作。换绑时通常需要验证旧账号和新账号。\n\n如果旧手机号无法使用，请按页面提示发起申诉，并尽量提供原账号、常用设备、近期订单或充值记录、相关截图等信息，方便客服核验。',
               'zh-TW': '如果 App 當前版本已開放換綁入口，可在"我的"或賬號設置頁面按提示操作。換綁時通常需要驗證舊賬號和新賬號。\n\n如果舊手機號無法使用，請按頁面提示發起申訴，並盡量提供原賬號、常用設備、近期訂單或充值記錄、相關截圖等資訊，方便客服核驗。',
               ja: 'アプリの現在のバージョンで対応している場合、「マイ」またはアカウント設定ページで指示に従って操作します。通常、古いアカウントと新しいアカウントの両方を確認する必要があります。\n\n古い電話番号にアクセスできない場合は、ページの手順に従って異議申し立てを行い、元のアカウント、よく使うデバイス、最近の注文、スクリーンショットなど、できるだけ多くの情報を提供してください。',
             },
