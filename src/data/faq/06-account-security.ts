@@ -101,7 +101,7 @@ export const accountSecurityCategory: FAQCategory = {
               ja: 'アカウントを削除する前に知っておくべきことは？',
             },
             answer: {
-              en: 'Account deletion is irreversible. After deletion, account data, membership benefits, credits, credit packs, redemption code benefits, and device binding relationships cannot be recovered. Please read the page prompts carefully before proceeding.\n\nAfter changing your bound account, the system will restrict further changes, deletion, or password changes; the restriction duration is shown on the page.',
+              en: 'Account deletion is irreversible. After deletion, account data, membership benefits, points, credit packs, redemption code benefits, and device binding relationships cannot be recovered. Please read the page prompts carefully before proceeding.\n\nAfter changing your bound account, the system will restrict further changes, deletion, or password changes; the restriction duration is shown on the page.',
               zh: '注销账号不可逆。账号注销后，账号数据、会员权益、积分、充电包、兑换码权益和设备绑定关系无法恢复。提交前请认真阅读页面提示。\n\n账号换绑后，系统会限制再次换绑、注销或修改密码；限制时长以页面提示为准。',
               'zh-TW': '註銷賬號不可逆。賬號註銷後，賬號數據、會員權益、積分、充電包、兌換碼權益和設備綁定關係無法恢復。提交前請認真閱讀頁面提示。\n\n賬號換綁後，系統會限制再次換綁、註銷或修改密碼；限制時長以頁面提示為準。',
               ja: 'アカウントの削除は不可逆的です。削除後、アカウントデータ、メンバーシップ特典、クレジット、クレジットパック、交換コード特典、デバイスのバインド関係は回復できません。続行する前に、ページのプロンプトをよくお読みください。\n\nアカウントのバインド変更後、システムは再度の変更、削除、パスワード変更を制限します。制限期間はページに表示されます。',

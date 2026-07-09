@@ -173,15 +173,15 @@ export const appServicesCategory: FAQCategory = {
             },
           },
           {
-            id: 'credits-for-transcription',
+            id: 'points-for-transcription',
             question: {
-              en: 'How are credits deducted for AI transcription?',
+              en: 'How are points deducted for AI transcription?',
               zh: 'AI 转写怎么扣积分？',
               'zh-TW': 'AI 轉寫怎麼扣積分？',
               ja: 'AI文字起こしのクレジットはどう引かれますか？',
             },
             answer: {
-              en: 'Transcription is charged by credits: 1 credit = 1 minute of transcription. Less than 1 minute is charged as 1 credit. The single recording/transcription limit is 300 minutes (5 hours). Elite members enjoy unlimited transcription.',
+              en: 'Transcription is charged by points: 1 point = 1 minute of transcription. Less than 1 minute is charged as 1 point. The single recording/transcription limit is 300 minutes (5 hours). Elite members enjoy unlimited transcription.',
               zh: '转写按积分扣费，通常 1 积分 = 1 分钟转写时长，不足 1 分钟按 1 积分扣除。单次录音或转写上限为 300 分钟（5 小时）。精英会员为无限转写。',
               'zh-TW': '轉寫按積分扣費，通常 1 積分 = 1 分鐘轉寫時長，不足 1 分鐘按 1 積分扣除。單次錄音或轉寫上限為 300 分鐘（5 小時）。精英會員為無限轉寫。',
               ja: '文字起こしはクレジットで課金されます：1クレジット＝1分の文字起こし。1分未満は1クレジットとして課金。1回の録音/文字起こしの上限は300分（5時間）です。エリートメンバーは無制限の文字起こしを利用できます。',
@@ -211,7 +211,7 @@ export const appServicesCategory: FAQCategory = {
               ja: '要約の生成に失敗した場合はどうすればいいですか？',
             },
             answer: {
-              en: 'Please check:\n1. Is the network stable?\n2. Has the audio been fully uploaded or synced?\n3. Does the current account have available credits or membership benefits?\n4. Is the file length within the single limit?\n5. Does the file title, import title, or content trigger sensitive content rules?\n\nIf the recording or transcription text triggers sensitive content, transcription may complete normally, but summary or note generation may show a violation prompt.',
+              en: 'Please check:\n1. Is the network stable?\n2. Has the audio been fully uploaded or synced?\n3. Does the current account have available points or membership benefits?\n4. Is the file length within the single limit?\n5. Does the file title, import title, or content trigger sensitive content rules?\n\nIf the recording or transcription text triggers sensitive content, transcription may complete normally, but summary or note generation may show a violation prompt.',
               zh: '请先检查：\n1. 网络是否稳定。\n2. 音频是否已经完成上传或同步。\n3. 当前账号是否有可用积分或会员权益。\n4. 文件长度是否超过单次上限。\n5. 文件标题、导入标题或内容是否触发敏感内容规则。\n\n如果录音或转写文本命中敏感内容，转写可能正常完成，但生成总结或笔记时可能提示"您的转写内容中有违规内容"。',
               'zh-TW': '請先檢查：\n1. 網絡是否穩定。\n2. 音頻是否已經完成上傳或同步。\n3. 當前賬號是否有可用積分或會員權益。\n4. 文件長度是否超過單次上限。\n5. 文件標題、導入標題或內容是否觸發敏感內容規則。\n\n如果錄音或轉寫文本命中敏感內容，轉寫可能正常完成，但生成總結或筆記時可能提示"您的轉寫內容中有違規內容"。',
               ja: '以下を確認してください：\n1. ネットワークは安定していますか？\n2. オーディオは完全にアップロードまたは同期されていますか？\n3. 現在のアカウントに利用可能なクレジットまたはメンバーシップ特典がありますか？\n4. ファイルの長さが1回の上限内ですか？\n5. ファイルタイトル、インポートタイトル、またはコンテンツが機密コンテンツルールに抵触していませんか？',

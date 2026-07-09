@@ -72,7 +72,7 @@ export const quickStartCategory: FAQCategory = {
               ja: 'アプリは無料ですか？',
             },
             answer: {
-              en: 'The Lynse app is free to download. AI transcription, summary, import and other capabilities consume credits or are subject to membership rules. Specific free quotas, membership benefits, and paid options are displayed in the app\'s membership center.',
+              en: 'The Lynse app is free to download. AI transcription, summary, import and other capabilities consume points or are subject to membership rules. Specific free quotas, membership benefits, and paid options are displayed in the app\'s membership center.',
               zh: '灵光记 App 可免费下载。AI 转写、总结、导入等能力会按会员规则消耗积分或受会员权益限制。具体免费额度、会员权益和付费入口以 App 内会员中心展示为准。',
               'zh-TW': '靈光記 App 可免費下載。AI 轉寫、總結、導入等能力會按會員規則消耗積分或受會員權益限制。具體免費額度、會員權益和付費入口以 App 內會員中心展示為準。',
               ja: 'Lynseアプリは無料でダウンロードできます。AI文字起こし、要約、インポートなどの機能は、クレジットを消費するか、メンバーシップルールに従います。無料枠、メンバーシップ特典、有料オプションは、アプリ内のメンバーシップセンターで確認できます。',
@@ -117,7 +117,7 @@ export const quickStartCategory: FAQCategory = {
               ja: '購入後にスマホを変更しても使用できますか？',
             },
             answer: {
-              en: 'Yes. Membership benefits, credits, credit packs, redemption code benefits, and device binding status are tied to your Lynse account. After changing phones, log in to the same account to continue using your available benefits.',
+              en: 'Yes. Membership benefits, points, credit packs, redemption code benefits, and device binding status are tied to your Lynse account. After changing phones, log in to the same account to continue using your available benefits.',
               zh: '可以。会员权益、积分、充电包、兑换码权益和设备绑定状态与灵光记账号关联。更换手机后，登录同一个账号即可继续使用账号内可用权益。',
               'zh-TW': '可以。會員權益、積分、充電包、兌換碼權益和設備綁定狀態與靈光記賬號關聯。更換手機後，登錄同一個賬號即可繼續使用賬號內可用權益。',
               ja: 'はい。メンバーシップ特典、クレジット、クレジットパック、交換コード特典、デバイスのバインド状態はLynseアカウントに紐付けられています。スマホを変更した後、同じアカウントにログインすると利用可能な特典を继续使用できます。',

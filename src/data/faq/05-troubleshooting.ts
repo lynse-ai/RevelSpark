@@ -159,13 +159,13 @@ export const troubleshootingCategory: FAQCategory = {
           {
             id: 'transcription-runs-out',
             question: {
-              en: 'I\'ve used up my transcription credits. What can I do?',
+              en: 'I\'ve used up my transcription points. What can I do?',
               zh: '转写额度用完怎么办？',
               'zh-TW': '轉寫額度用完怎麼辦？',
               ja: '文字起こしのクレジットを使い切りました。どうすればいいですか？',
             },
             answer: {
-              en: '• Free User: Bind a SparkCard to become a Standard Member and get monthly credits.\n• Standard or Premium Member: Purchase credit packs or upgrade to a higher membership tier.\n• Elite Member: Unlimited transcription, so this usually doesn\'t apply.',
+              en: '• Free User: Bind a SparkCard to become a Standard Member and get monthly points.\n• Standard or Premium Member: Purchase credit packs or upgrade to a higher membership tier.\n• Elite Member: Unlimited transcription, so this usually doesn\'t apply.',
               zh: '• 普通用户：可按页面提示绑定灵光闪记卡，成为标准会员后获得对应月度积分。\n• 标准会员或高级会员：可购买充电包，或升级更高会员等级。\n• 精英会员：无限转写，通常不存在额度用尽问题。',
               'zh-TW': '• 普通用戶：可按頁面提示綁定靈光閃記卡，成為標準會員後獲得對應月度積分。\n• 標準會員或高級會員：可購買充電包，或升級更高會員等級。\n• 精英會員：無限轉寫，通常不存在額度用盡問題。',
               ja: '• 無料ユーザー：SparkCardをバインドしてスタンダードメンバーになり、月次クレジットを取得します。\n• スタンダードまたはプレミアムメンバー：クレジットパックを購入するか、上位ティアにアップグレードします。\n• エリートメンバー：無制限の文字起こしなので、通常この問題は発生しません。',

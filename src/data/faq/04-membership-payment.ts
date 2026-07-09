@@ -9,7 +9,7 @@ export const membershipPaymentCategory: FAQCategory = {
       ja: 'メンバーシップと支払い',
     },
     description: {
-      en: 'Plans, credits, subscriptions and billing',
+      en: 'Plans, points, subscriptions and billing',
       zh: '会员计划、积分、订阅和账单',
       'zh-TW': '會員計劃、積分、訂閱和賬單',
       ja: 'プラン、クレジット、サブスクリプション、請求',
@@ -41,7 +41,7 @@ export const membershipPaymentCategory: FAQCategory = {
               ja: 'メンバーシップティアは何ですか？',
             },
             answer: {
-              en: '• Free User: No SparkCard bound. Basic free benefits with monthly basic credits as shown in the membership center.\n• Standard Member: Automatically obtained after binding a SparkCard. 500 credits/month.\n• Premium Member: Via paid subscription or promotional benefits. 1500 credits/month, more benefits as shown in the membership center.\n• Elite Member: Via paid subscription or promotional benefits. Unlimited transcription, specific benefits as shown in the membership center.\n\nFree users must first bind a SparkCard to become Standard Members before accessing paid membership or credit pack purchases. Free users cannot directly purchase Premium/Elite membership or credit packs.',
+              en: '• Free User: No SparkCard bound. Basic free benefits with monthly basic points as shown in the membership center.\n• Standard Member: Automatically obtained after binding a SparkCard. 500 points/month.\n• Premium Member: Via paid subscription or promotional benefits. 1500 points/month, more benefits as shown in the membership center.\n• Elite Member: Via paid subscription or promotional benefits. Unlimited transcription, specific benefits as shown in the membership center.\n\nFree users must first bind a SparkCard to become Standard Members before accessing paid membership or credit pack purchases. Free users cannot directly purchase Premium/Elite membership or credit packs.',
               zh: '• 普通用户：未绑定灵光闪记卡。免费基础权益，每月基础积分以会员中心为准。\n• 标准会员：绑定灵光闪记卡后自动获得。每月 500 积分，正常使用当前开放功能。\n• 高级会员：付费订阅或活动权益。每月 1500 积分，更多权益以会员中心为准。\n• 精英会员：付费订阅或活动权益。无限转写，具体权益以会员中心为准。\n\n普通用户需先绑定灵光闪记卡，成为标准会员后，再进入付费会员或充电包购买路径。普通用户不能直接购买高级/精英会员，也不能购买充电包。',
               'zh-TW': '• 普通用戶：未綁定靈光閃記卡。免費基礎權益，每月基礎積分以會員中心為準。\n• 標準會員：綁定靈光閃記卡後自動獲得。每月 500 積分，正常使用當前開放功能。\n• 高級會員：付費訂閱或活動權益。每月 1500 積分，更多權益以會員中心為準。\n• 精英會員：付費訂閱或活動權益。無限轉寫，具體權益以會員中心為準。\n\n普通用戶需先綁定靈光閃記卡，成為標準會員後，再進入付費會員或充電包購買路徑。普通用戶不能直接購買高級/精英會員，也不能購買充電包。',
               ja: '• 無料ユーザー：SparkCard未バインド。基本無料特典と月次基本クレジット（メンバーシップセンターに表示）。\n• スタンダードメンバー：SparkCardバインド後自動付与。500クレジット/月。\n• プレミアムメンバー：有料サブスクリプションまたはプロモーション特典。1500クレジット/月。\n• エリートメンバー：有料サブスクリプションまたはプロモーション特典。無制限の文字起こし。\n\n無料ユーザーはまずSparkCardをバインドしてスタンダードメンバーになる必要があります。無料ユーザーはプレミアム/エリートメンバーシップやクレジットパックを直接購入できません。',
@@ -49,15 +49,15 @@ export const membershipPaymentCategory: FAQCategory = {
             promoted: true,
           },
           {
-            id: 'credits-calculation',
+            id: 'points-calculation',
             question: {
-              en: 'How are credits calculated?',
+              en: 'How are points calculated?',
               zh: '积分怎么计算？',
               'zh-TW': '積分怎麼計算？',
               ja: 'クレジットはどう計算されますか？',
             },
             answer: {
-              en: '• 1 credit = 1 minute of transcription.\n• Less than 1 minute is charged as 1 credit.\n• Single recording/transcription limit: 300 minutes (5 hours).\n• Periodic credits do not carry over.\n\nCredit consumption order:\n1. Time-limited bonus credits.\n2. Periodic base credits.\n3. Credit pack credits (prioritizes the one expiring first).',
+              en: '• 1 point = 1 minute of transcription.\n• Less than 1 minute is charged as 1 point.\n• Single recording/transcription limit: 300 minutes (5 hours).\n• Periodic points do not carry over.\n\nPoint consumption order:\n1. Time-limited bonus points.\n2. Periodic base points.\n3. Credit pack points (prioritizes the one expiring first).',
               zh: '• 1 积分 = 1 分钟转写时长。\n• 不足 1 分钟按 1 积分扣除。\n• 单次录音或转写上限为 300 分钟（5 小时）。\n• 周期性积分不结转。\n\n积分消耗顺序通常为：\n1. 有时限赠送积分。\n2. 周期性基础积分。\n3. 充电包积分（优先消耗最先过期的充电包）。',
               'zh-TW': '• 1 積分 = 1 分鐘轉寫時長。\n• 不足 1 分鐘按 1 積分扣除。\n• 單次錄音或轉寫上限為 300 分鐘（5 小時）。\n• 週期性積分不結轉。\n\n積分消耗順序通常為：\n1. 有時限贈送積分。\n2. 週期性基礎積分。\n3. 充電包積分（優先消耗最先過期的充電包）。',
               ja: '• 1クレジット＝1分の文字起こし。\n• 1分未満は1クレジットとして課金。\n• 1回の録音/文字起こしの上限：300分（5時間）。\n• 定期的なクレジットは繰り越されません。\n\nクレジット消費順序：\n1. 期限付きボーナスクレジット。\n2. 定期的な基本クレジット。\n3. クレジットパックのクレジット（最も早く期限が切れるものを優先）。',
@@ -72,7 +72,7 @@ export const membershipPaymentCategory: FAQCategory = {
               ja: 'クレジットパックとは何ですか？',
             },
             answer: {
-              en: 'Credit packs are used to supplement transcription credits, available to Standard and Premium members. Free users must first bind a SparkCard to become Standard Members before purchasing. Elite members have unlimited transcription and cannot purchase credit packs.\n\nCredit packs are valid for 365 days. You can hold multiple active packs simultaneously. New packs calculate their validity independently. When starting a transcription, the system automatically consumes credits — no need to manually select a specific pack.',
+              en: 'Credit packs are used to supplement transcription points, available to Standard and Premium members. Free users must first bind a SparkCard to become Standard Members before purchasing. Elite members have unlimited transcription and cannot purchase credit packs.\n\nCredit packs are valid for 365 days. You can hold multiple active packs simultaneously. New packs calculate their validity independently. When starting a transcription, the system automatically consumes points — no need to manually select a specific pack.',
               zh: '充电包是用于额外补充转写积分的增值资源。充电包面向标准会员与高级会员开放；普通用户需先绑定灵光闪记卡成为标准会员后再购买；精英会员享有完全无限转写权益，无法且无需购买充电包。\n\n充电包有效期为 365 天，可同时持有多个有效充电包。新增充电包会独立计算有效期。发起转写时，系统会按规则自动消耗积分，无需手动选择某个充电包。',
               'zh-TW': '充電包是用於額外補充轉寫積分的增值資源。充電包面向標準會員與高級會員開放；普通用戶需先綁定靈光閃記卡成為標準會員後再購買；精英會員享有完全無限轉寫權益，無法且無需購買充電包。\n\n充電包有效期為 365 天，可同時持有多個有效充電包。新增充電包會獨立計算有效期。發起轉寫時，系統會按規則自動消耗積分，無需手動選擇某個充電包。',
               ja: 'クレジットパックは文字起こしクレジットを補充するための追加リソースです。スタンダードおよびプレミアムメンバーが利用可能です。無料ユーザーはまずSparkCardをバインドしてスタンダードメンバーになる必要があります。エリートメンバーは無制限の文字起こしがあり、クレジットパックは購入できません。\n\nクレジットパックの有効期限は365日です。複数の有効なパックを同時に保持できます。文字起こし開始時、システムは自動的にクレジットを消費します。',
@@ -132,7 +132,7 @@ export const membershipPaymentCategory: FAQCategory = {
               ja: 'スマホを変えてもメンバーシップは続きますか？',
             },
             answer: {
-              en: 'Yes. Membership, credits, credit packs, and redemption code benefits are tied to your Lynse account. After changing phones, log in to the same account to restore your available benefits.',
+              en: 'Yes. Membership, points, credit packs, and redemption code benefits are tied to your Lynse account. After changing phones, log in to the same account to restore your available benefits.',
               zh: '在。会员、积分、充电包和兑换码权益与灵光记账号绑定。更换手机后，登录原账号即可恢复账号内可用权益。',
               'zh-TW': '在。會員、積分、充電包和兌換碼權益與靈光記賬號綁定。更換手機後，登錄原賬號即可恢復賬號內可用權益。',
               ja: 'はい。メンバーシップ、クレジット、クレジットパック、交換コードの特典はLynseアカウントに紐付けられています。スマホを変更した後、同じアカウントにログインすると利用可能な特典が復元されます。',

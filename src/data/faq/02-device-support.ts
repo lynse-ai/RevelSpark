@@ -72,7 +72,7 @@ export const deviceSupportCategory: FAQCategory = {
               ja: 'SparkCardをどう接続しますか？',
             },
             answer: {
-              en: '1. Open the Lynse app and go to the device page.\n2. Tap "Add Device".\n3. Turn on Bluetooth as prompted and bring the device close to your phone.\n4. Select the device to connect.\n5. Complete the binding as prompted.\n6. After connecting, view the device status on the device page.\n\nBinding the SparkCard automatically grants Standard Membership with corresponding monthly credits and benefits.',
+              en: '1. Open the Lynse app and go to the device page.\n2. Tap "Add Device".\n3. Turn on Bluetooth as prompted and bring the device close to your phone.\n4. Select the device to connect.\n5. Complete the binding as prompted.\n6. After connecting, view the device status on the device page.\n\nBinding the SparkCard automatically grants Standard Membership with corresponding monthly points and benefits.',
               zh: '1. 打开灵光记 App，进入设备页面。\n2. 点击添加设备。\n3. 按页面提示开启蓝牙，并将设备靠近手机。\n4. 选择要连接的设备。\n5. 按提示完成绑定。\n6. 连接成功后，在设备页面查看设备状态。\n\n绑定灵光闪记卡后，账号会成为标准会员，获得对应月度积分和权益。',
               'zh-TW': '1. 打開靈光記 App，進入設備頁面。\n2. 點擊添加設備。\n3. 按頁面提示開啟藍牙，並將設備靠近手機。\n4. 選擇要連接的設備。\n5. 按提示完成綁定。\n6. 連接成功後，在設備頁面查看設備狀態。\n\n綁定靈光閃記卡後，賬號會成為標準會員，獲得對應月度積分和權益。',
               ja: '1. Lynseアプリを開き、デバイスページに移動します。\n2. 「デバイスを追加」をタップします。\n3. 指示に従ってBluetoothをオンにし、デバイスをスマホに近づけます。\n4. 接続するデバイスを選択します。\n5. 指示に従ってバインドを完了します。\n6. 接続後、デバイスページでデバイスステータスを確認します。\n\nSparkCardをバインドすると、自動的にスタンダードメンバーシップが付与されます。',
